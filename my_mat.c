@@ -1,68 +1,83 @@
 #include "stdio.h"
 #include "my_mat.h"
-#define size 10
-#define infinty 1000000
-#define true 1
-#define false 0
+#define infinty 1000
+#define True 1
+#define False 0
+#define nV 10
+#define INF 999
 
-int find_min(int a,int b){
-    return (a<b)?a:b;
-}
-
-int get_matrix(int matrix [][size]){
-    int matrix[size][size];
-    for(int i=0;i<size;i++){
-        for(int j=0;j<size;j++){
-            scanf("%d",matrix[i][j]);
+int get_matrix(int matrix [][nV]){
+    int value=0;
+    for(int i=0;i<nV;i++){
+        for(int j=0;j<nV;j++){
+            printf("pls enter num");
+            scanf("%d",&value);
+            if(i==j){
+                matrix[i][j] = 0;
+             }
+             else if(value==0){
+                matrix[i][j]=infinty;
+             }
+             else{
+             matrix[i][j]=value;
+             }
         }
     }
     return 0;
 }
+int if_there_path(int i, int j,int matrix [][nV]){
 
-int calculate_matrix(int matrix [][size] ){
-int help_mat [size][size];
-for(int i=0;i<size;i++){
-    for(int j=0;j<size;j++){
-        if(matrix[i][j]==0){
-            help_mat[i][j]=infinty;
+    int matrix2[nV][nV], x, y, k;
+
+  for (x = 0; x < nV; x++){
+    for (y = 0; y < nV; y++){
+      matrix2[x][y] = matrix[x][y];
         }
-        else if(i==j){
-            help_mat[i][j]=0;
-        }
-        else{
-        help_mat[i][j]=matrix[i][j];
-        }
+  }
+  
+  for (k = 0; k < nV; k++) {
+    for (x = 0; x < nV; x++) {
+      for (y = 0; y < nV; y++) {
+        if (matrix2[x][k] + matrix2[k][y] < matrix2[x][y])
+          matrix2[x][y] = matrix2[x][k] + matrix2[k][y];
+      }
+
     }
-}
-
-for(int k=1;k<size;k++){
-    for(int i=0;i<size;i++){
-        for(int j=0;j<size;j++){
-            if(k%2==0){
-                help_mat[i][j]=matrix[i][k]+matrix[k][j];
-            }
-            else{//k%2==1
-                matrix[i][j]=find_min(help_mat[i][j],help_mat[i][k]+help_mat[k][j]);
-            }
-        }
-    }
-}
-return 1;
-}
-
-int if_there_path(int i, int j,int matrix [][size]){
-    if(matrix[i][j]!=0){
-        return true;
+  }
+    
+    if(matrix2[i][j]==0 || matrix2[i][j]==infinty){
+        printf("False\n");
+        return False;
     }
     else{
-        return false;
+        printf("True\n");
+        return True;
     }
 }
-int shortest_path(int i, int j , int matrix[][size]){
-    if(matrix[i][j]==0){
+int shortest_path(int i, int j , int matrix[][nV]){
+    int matrix2[nV][nV], x, y, k;
+
+  for (x = 0; x < nV; x++){
+    for (y = 0; y < nV; y++){
+      matrix2[x][y] = matrix[x][y];
+        }
+  }
+
+
+  // Adding vertices individually
+  for (k = 0; k < nV; k++) {
+    for (x = 0; x < nV; x++) {
+      for (y = 0; y < nV; y++) {
+        if (matrix2[x][k] + matrix2[k][y] < matrix2[x][y])
+          matrix2[x][y] = matrix2[x][k] + matrix2[k][y];
+      }
+
+    }
+  }
+    if(matrix2[i][j]==0||matrix2[i][j]==infinty){
         return -1;
     }
-    return matrix[i][j];
+    return matrix2[i][j];
 }
 
 

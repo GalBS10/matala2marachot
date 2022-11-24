@@ -10,7 +10,6 @@ int get_matrix(int matrix [][nV]){
     int value=0;
     for(int i=0;i<nV;i++){
         for(int j=0;j<nV;j++){
-            printf("pls enter num");
             scanf("%d",&value);
             if(i==j){
                 matrix[i][j] = 0;
@@ -34,7 +33,7 @@ int if_there_path(int i, int j,int matrix [][nV]){
       matrix2[x][y] = matrix[x][y];
         }
   }
-  
+
   for (k = 0; k < nV; k++) {
     for (x = 0; x < nV; x++) {
       for (y = 0; y < nV; y++) {

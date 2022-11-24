@@ -6,13 +6,13 @@
 int main(){
 int matrix[10][10];
 char order;
-int bad_choice;
+//int bad_choice;
 int check = True;
 while(check){
     scanf("%c",&order);
     if(order=='A'){//func 1
         get_matrix(matrix);
-        scanf("%d",&bad_choice);
+       // scanf("%d",&bad_choice);
         } 
         else if(order=='B'){
         //func 2
@@ -20,7 +20,7 @@ while(check){
         scanf("%d",&i);
         scanf("%d",&j);
         if_there_path(i,j,matrix);
-        scanf("%d",&bad_choice);
+       // scanf("%d",&bad_choice);
         }
         else if(order=='C'){
         //func 3
@@ -28,14 +28,14 @@ while(check){
         scanf("%d",&i);
         scanf("%d",&j);
         printf("%d \n",shortest_path(i,j,matrix));
-        scanf("%d",&bad_choice);
+        //scanf("%d",&bad_choice);
         }
         else if(order=='D'){
         //exit loop
         check = False;
         }
         else{
-            scanf("%d",&bad_choice);
+          //  scanf("%d",&bad_choice);
         }
     }
     return 0;

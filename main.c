@@ -4,16 +4,7 @@
 #define True 1
 #define False 0
 int main(){
-int matrix[10][10] ={{0,3,1,infinty,infinty,2,infinty,infinty,infinty,infinty},
-                    {3,0,1,infinty,infinty,infinty,infinty,infinty,infinty,infinty},
-                    {1,1,0,infinty,infinty,infinty,infinty,infinty,infinty,infinty},
-                    {infinty,infinty,infinty,0,infinty,infinty,infinty,5,infinty,infinty},
-                    {infinty,infinty,infinty,infinty,0,infinty,infinty,4,1,1},
-                    {2,infinty,infinty,infinty,infinty,0,2,infinty,infinty,infinty},
-                    {infinty,infinty,infinty,infinty,infinty,2,0,infinty,infinty,infinty},
-                    {infinty,infinty,infinty,5,4,infinty,infinty,0,infinty,2},
-                    {infinty,infinty,infinty,infinty,1,infinty,infinty,infinty,0,infinty},
-                    {infinty,infinty,infinty,infinty,1,infinty,infinty,2,infinty,0}};
+int matrix[10][10];
 char order;
 int bad_choice;
 int check = True;
@@ -44,10 +35,8 @@ while(check){
         check = False;
         }
         else{
-            
             scanf("%d",&bad_choice);
         }
-        
     }
     return 0;
 }

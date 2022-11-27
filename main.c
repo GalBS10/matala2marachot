@@ -27,7 +27,7 @@ while(check){
         int i,j;
         scanf("%d",&i);
         scanf("%d",&j);
-        printf("%d \n",shortest_path(i,j,matrix));
+        printf("%d\n",shortest_path(i,j,matrix));
         //scanf("%d",&bad_choice);
         }
         else if(order=='D'){

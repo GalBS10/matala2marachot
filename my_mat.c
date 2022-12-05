@@ -4,7 +4,6 @@
 #define True 1
 #define False 0
 #define nV 10
-#define INF 999
 
 int get_matrix(int matrix [][nV]){
     int value=0;
@@ -33,12 +32,18 @@ int if_there_path(int i, int j,int matrix [][nV]){
       matrix2[x][y] = matrix[x][y];
         }
   }
+  int tmp1;
+  int tmp2;
+  int tmp3;
 
   for (k = 0; k < nV; k++) {
     for (x = 0; x < nV; x++) {
       for (y = 0; y < nV; y++) {
-        if (matrix2[x][k] + matrix2[k][y] < matrix2[x][y])
-          matrix2[x][y] = matrix2[x][k] + matrix2[k][y];
+        tmp1=matrix2[x][y];
+        tmp2=matrix2[x][k];
+        tmp3=matrix2[k][y];
+        if (tmp1 > tmp2+tmp3)
+          matrix2[x][y] = tmp2 + tmp3;
       }
 
     }
@@ -62,13 +67,18 @@ int shortest_path(int i, int j , int matrix[][nV]){
         }
   }
 
-
+int tmp1;
+  int tmp2;
+  int tmp3;
   // Adding vertices individually
   for (k = 0; k < nV; k++) {
     for (x = 0; x < nV; x++) {
       for (y = 0; y < nV; y++) {
-        if (matrix2[x][k] + matrix2[k][y] < matrix2[x][y])
-          matrix2[x][y] = matrix2[x][k] + matrix2[k][y];
+        tmp1=matrix2[x][y];
+        tmp2=matrix2[x][k];
+        tmp3=matrix2[k][y];
+        if (tmp1 > tmp2+tmp3)
+          matrix2[x][y] = tmp2 + tmp3;
       }
 
     }
